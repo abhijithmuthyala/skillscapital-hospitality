@@ -1,5 +1,6 @@
 import Image from "next/image";
 import HeroStats from "./components/hero-stats";
+import EngagementModels from "./components/models";
 import Button from "./ui/button";
 import BodyPaddingCard from "./ui/cards/body-padding";
 
@@ -29,6 +30,19 @@ export default function Home() {
             <Button variant="primary">Find SAP experts now</Button>
             <Button variant="text">Explore Talent Cloud &rarr;</Button>
           </div>
+        </BodyPaddingCard>
+      </section>
+      <section>
+        <BodyPaddingCard className="py-20 bg-background">
+          <header className="text-center mb-8 text-balance text-primary">
+            <h2 className="text-9xl font-semibold  mb-4">
+              Source &amp; Deploy SAP Expertise Seamlessly
+            </h2>
+            <p className="opacity-80">
+              Our AI driven platform powers three key engagement models.
+            </p>
+          </header>
+          <EngagementModels />
         </BodyPaddingCard>
       </section>
     </>
