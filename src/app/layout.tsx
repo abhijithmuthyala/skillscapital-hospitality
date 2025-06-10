@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 
+import Navbar from "./components/navbar";
 import "./globals.css";
+import BodyPaddingCard from "./ui/cards/body-padding";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -22,7 +24,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${font.className} overflow-x-hidden`}>
-      <body>{children}</body>
+      <body className="text-lg text-text-primary bg-background">
+        <BodyPaddingCard>
+          <Navbar className="py-4" />
+        </BodyPaddingCard>
+        <main>{children}</main>
+      </body>
     </html>
   );
 }

@@ -1,9 +1,6 @@
 @import "tailwindcss";
 
 @theme {
-  /* Reset and only use the design system tokens */
-  --*: initial;
-
   /* Font */
   --font-poppins: Poppins, sans-serif;
 
@@ -36,11 +33,13 @@
   --color-background: #fafafa;
   --color-surface: #ffffff;
   --color-border: #e0e0e0;
+  --color-cta: var(--color-secondary);
 
-  --color-text-primary: #2b2b38;
+  --color-text-primary: #282938;
   --color-text-secondary: #464646;
   --color-text-inverse: #ffffff;
   --color-text-inverse-secondary: #969a74;
+  --color-text-logo: #1c1e53;
 
   --color-success: #27ae60;
   --color-error: #eb5757;
@@ -48,4 +47,16 @@
   --color-info: #2d9cdb;
   --color-positive: #a0ffae;
   --color-icons: #2405f2;
+
+  --color-hero-bg-start: #003361;
+  --color-hero-bg-end: #002c59;
+  --color-hero-img-bg-start: #00123b;
+  --color-hero-img-bg-end: #005184;
+
+  /* Spacing */
+  --spacing-body: --spacing(4);
+  --leading-18: 4.5rem;
+
+  /* Breakpoints */
+  --breakpoint-xl: 90rem /* 1440px */;
 }
