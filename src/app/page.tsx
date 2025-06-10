@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { FeatureUnitsList } from "./components/features";
 import HeroStats from "./components/hero-stats";
 import EngagementModels from "./components/models";
 import Button from "./ui/button";
@@ -43,6 +44,17 @@ export default function Home() {
             </p>
           </header>
           <EngagementModels />
+        </BodyPaddingCard>
+      </section>
+      <section>
+        <BodyPaddingCard className="py-16">
+          <header className="text-center mb-8 text-balance text-primary">
+            <h2 className="text-9xl font-semibold  mb-4">
+              AI-Powered Deep Vet 360
+            </h2>
+            <p className="opacity-80">Precision hiring at scale.</p>
+          </header>
+          <FeatureUnitsList />
         </BodyPaddingCard>
       </section>
     </>

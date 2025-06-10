@@ -12,15 +12,13 @@ export default function Button({
   const variantToClass = {
     primary: "bg-cta text-primary",
     secondary: "bg-secondary",
-    outline: "bg-transparent border-2 border-border",
+    outline: "border-2 border-border bg-text-inverse",
     text: "bg-transparent",
   };
   className = `${variantToClass[variant]} ${className}`;
 
   return (
-    <button
-      className={`px-14 py-4 font-semibold rounded-4xl cursor-pointer ${className}`}
-    >
+    <button className={`font-semibold rounded-4xl cursor-pointer ${className}`}>
       {children}
     </button>
   );
