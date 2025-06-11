@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 
+import Footer from "./components/footer";
 import Navbar from "./components/navbar";
 import "./globals.css";
 import BodyPaddingCard from "./ui/cards/body-padding";
@@ -29,6 +30,7 @@ export default function RootLayout({
           <Navbar className="py-4" />
         </BodyPaddingCard>
         <main>{children}</main>
+        <Footer />
       </body>
     </html>
   );
