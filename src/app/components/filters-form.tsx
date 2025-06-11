@@ -2,19 +2,28 @@
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { PropertyType } from "@/data/hospitality";
 import { propertyTypes, propertyYears } from "@/lib/utils";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { ChangeEvent, FormEvent, useState } from "react";
+
+import deepEqual from "deep-equal";
+import useFilterParams from "../hooks/use-filter-params";
+
+export type FiltersState = {
+  search: string;
+  year: string;
+  type: PropertyType;
+};
 
 export default function FiltersForm() {
   const router = useRouter();
-  const searchParams = useSearchParams();
+  const filterParams = useFilterParams();
+  const [filters, setFilters] = useState(filterParams);
 
-  const [filters, setFilters] = useState({
-    search: "",
-    year: "",
-    type: "",
-  });
+  if (!deepEqual(filterParams, filters)) {
+    setFilters(filterParams);
+  }
 
   function handleFilterChange(
     e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -27,7 +36,7 @@ export default function FiltersForm() {
   function updateFilters(e: FormEvent) {
     e.preventDefault();
 
-    const params = new URLSearchParams(searchParams.toString());
+    const params = new URLSearchParams(filterParams);
     params.set("search", filters.search);
     params.set("year", filters.year);
     params.set("type", filters.type);
@@ -43,6 +52,7 @@ export default function FiltersForm() {
           placeholder="Search by title, location..."
           id="search"
           name="search"
+          value={filters.search}
           onChange={handleFilterChange}
         />
       </label>
@@ -52,10 +62,11 @@ export default function FiltersForm() {
           <select
             name="type"
             id="type"
-            defaultValue={""}
+            value={filters.type}
             onChange={handleFilterChange}
             className="border border-zinc-300"
           >
+            <option value="all">All</option>
             {propertyTypes.map(function (type) {
               return (
                 <option key={type} value={type}>
@@ -70,10 +81,11 @@ export default function FiltersForm() {
           <select
             name="year"
             id="year"
-            defaultValue={""}
+            value={filters.year}
             onChange={handleFilterChange}
             className="border border-zinc-300"
           >
+            <option value="all">All</option>
             {propertyYears.map(function (year) {
               return (
                 <option key={year} value={year}>

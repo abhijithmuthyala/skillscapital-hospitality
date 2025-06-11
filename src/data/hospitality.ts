@@ -1,7 +1,52 @@
-export const hospitalityData = [
+export type TeamMember = {
+  name: string
+  role: string
+  lead: boolean
+}
+
+export type Initiative = {
+  name: string;
+  result: string
+}
+
+export type Metrics = Record<string, number | string> | null
+
+export type Modules = Record<string, { summary: string, tags: string[] }>
+
+export type Project = {
+  id: string;
+  title: string;
+  overview: string;
+  tools: string[];
+  launchDate: string;
+  metrics: Metrics;
+  initiatives: Initiative[];
+  guestFeedback: number[];
+  modules: Modules;
+  imageUrl: string;
+  team: TeamMember[];
+  documentLinks: string[]
+}
+
+export const propertyTypes = ["all", "business", "heritage", "resort"] as const
+
+export type PropertyType = typeof propertyTypes[number]
+
+export type PropertyData = {
+  id: string;
+  title: string;
+  propertyType: PropertyType;
+  isFlagship: boolean;
+  role: string;
+  location: string;
+  duration: string;
+  projects: Partial<Project>[];
+}
+
+export const hospitalityData: PropertyData[] = [
   {
     "id": "EXP001",
-    "property": "Taj Palace Mumbai",
+    "title": "Taj Palace Mumbai",
     "propertyType": "business",
     "isFlagship": true,
     "role": "Front Office Manager",
@@ -94,7 +139,7 @@ export const hospitalityData = [
   },
   {
     "id": "EXP002",
-    "property": "Leela Palace Udaipur",
+    "title": "Leela Palace Udaipur",
     "propertyType": "heritage",
     "isFlagship": false,
     "role": "F&B Operations Lead",
@@ -157,7 +202,7 @@ export const hospitalityData = [
   },
   {
     "id": "EXP003",
-    "property": "Four Seasons Bali",
+    "title": "Four Seasons Bali",
     "propertyType": "resort",
     "isFlagship": false,
     "role": "Guest Experience Head",

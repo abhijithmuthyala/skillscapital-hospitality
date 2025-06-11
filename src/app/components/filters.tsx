@@ -4,7 +4,7 @@ import FiltersForm from "./filters-form";
 
 export default function Filters() {
   return (
-    <div className="px-6 py-3 bg-zinc-50 animate-in">
+    <div className="body-padding py-3 bg-zinc-50 animate-in">
       <div className="flex py-3 justify-between gap-x-3 items-center">
         <div className="flex items-center gap-x-2">
           <Filter />

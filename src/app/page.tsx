@@ -1,9 +1,9 @@
-import Filters from "./components/filters";
+import Results from "./components/results";
 
-export default function Home() {
+export default async function Home() {
   return (
     <div>
-      <Filters />
+      <Results />
     </div>
   );
 }

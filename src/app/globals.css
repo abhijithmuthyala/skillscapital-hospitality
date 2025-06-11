@@ -120,3 +120,9 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer utilities {
+  .body-padding {
+    padding-inline: 1.5rem;
+  }
+}
