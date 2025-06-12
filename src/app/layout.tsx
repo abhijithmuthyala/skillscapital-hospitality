@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 
-import Footer from "./components/footer";
-import Navbar from "./components/navbar";
 import "./globals.css";
-import BodyPaddingCard from "./ui/cards/body-padding";
+
+import Filters from "./components/filters";
+import Header from "./components/header";
+import RootLayoutGrid from "./components/layout/root-layout";
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -24,13 +26,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${font.className} overflow-x-hidden`}>
-      <body className="text-lg text-text-primary bg-background">
-        <BodyPaddingCard>
-          <Navbar className="py-4" />
-        </BodyPaddingCard>
-        <main>{children}</main>
-        <Footer />
+    <html lang="en">
+      <body className="min-h-screen grid grid-rows-1">
+        <RootLayoutGrid
+          topSlot={<Header />}
+          leftSlot={<Filters />}
+          rightSlot={children}
+        />
       </body>
     </html>
   );
