@@ -119,6 +119,11 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  body:has(button.menu[aria-expanded="true"]) {
+    /* opacity: 0.25; */
+    /* filter: blur(0.5); */
+  }
 }
 
 @layer utilities {

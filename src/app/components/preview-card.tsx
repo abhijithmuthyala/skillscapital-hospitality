@@ -12,7 +12,7 @@ export default function PreviewCard({
   const roundedAvgRating = guestAvgRating.toFixed(2);
 
   return (
-    <article className="rounded-xl overflow-hidden">
+    <article className="rounded-xl overflow-hidden bg-zinc-100 shadow-lg">
       <Image src={"/images/test.jpg"} alt="" width={800} height={600} />
       <div className="p-6">
         <div className="flex gap-x-4 justify-between items-center">

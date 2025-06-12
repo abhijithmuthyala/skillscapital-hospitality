@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 
 import Filters from "./components/filters";
+import Header from "./components/header";
+import RootLayoutGrid from "./components/layout/root-layout";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -15,9 +17,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
-        <Filters />
-        {children}
+      <body className="min-h-screen grid grid-rows-1">
+        <RootLayoutGrid
+          topSlot={<Header />}
+          leftSlot={<Filters />}
+          rightSlot={children}
+        />
       </body>
     </html>
   );
