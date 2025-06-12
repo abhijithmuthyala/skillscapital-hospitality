@@ -1,4 +1,5 @@
 import { Filter } from "lucide-react";
+import { Suspense } from "react";
 import FiltersForm from "./filters-form";
 
 export default function Filters() {
@@ -9,7 +10,9 @@ export default function Filters() {
         <span className="font-semibold">Filters</span>
       </div>
       <hr className="w-full block h-[1px] bg-zinc-100 mb-4" />
-      <FiltersForm />
+      <Suspense>
+        <FiltersForm />
+      </Suspense>
     </div>
   );
 }
