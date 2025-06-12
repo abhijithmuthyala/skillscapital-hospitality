@@ -7,23 +7,20 @@ import { propertyTypes, propertyYears } from "@/lib/utils";
 import { useRouter } from "next/navigation";
 import { ChangeEvent, FormEvent, useState } from "react";
 
-import deepEqual from "deep-equal";
+import { Checkbox } from "@/components/ui/checkbox";
 import useFilterParams from "../hooks/use-filter-params";
 
 export type FiltersState = {
   search: string;
   year: string;
   type: PropertyType;
+  flagship: boolean;
 };
 
 export default function FiltersForm() {
   const router = useRouter();
   const filterParams = useFilterParams();
   const [filters, setFilters] = useState(filterParams);
-
-  if (!deepEqual(filterParams, filters)) {
-    setFilters(filterParams);
-  }
 
   function handleFilterChange(
     e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -33,14 +30,18 @@ export default function FiltersForm() {
     setFilters((filters) => ({ ...filters, [name]: e.target.value }));
   }
 
+  function handleCheckboxToggle() {
+    setFilters((filters) => ({ ...filters, flagship: !filters.flagship }));
+  }
+
   function updateFilters(e: FormEvent) {
     e.preventDefault();
 
-    const params = new URLSearchParams(filterParams);
+    const params = new URLSearchParams();
     params.set("search", filters.search);
     params.set("year", filters.year);
     params.set("type", filters.type);
-
+    params.set("flagship", filters.flagship ? "on" : "off");
     router.push(`?${params.toString()}`);
   }
 
@@ -94,6 +95,16 @@ export default function FiltersForm() {
               );
             })}
           </select>
+        </label>
+        <label htmlFor="flagship" className="flex gap-x-2 items-center">
+          <Checkbox
+            onClick={handleCheckboxToggle}
+            className="bg-zinc-300"
+            id="flagship"
+            name="flagship"
+            type="button"
+          />
+          Flagship
         </label>
       </div>
       <div className="self-center">

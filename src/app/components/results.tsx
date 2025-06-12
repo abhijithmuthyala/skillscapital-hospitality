@@ -6,12 +6,13 @@ import useFilterParams from "../hooks/use-filter-params";
 import PreviewCard from "./preview-card";
 
 export default function Results() {
-  const { search, type, year } = useFilterParams();
+  const { search, type, year, flagship } = useFilterParams();
 
   const filteredData = hospitalityData.filter(function (data) {
     return (
       (year === "all" || data.duration === year) &&
       (type === "all" || data.propertyType.includes(type)) &&
+      (!flagship || flagship === data.isFlagship) &&
       (data.role.toLowerCase().includes(search) ||
         data.title.toLowerCase().includes(search) ||
         data.location.toLowerCase().includes(search))
@@ -33,7 +34,7 @@ export default function Results() {
     <ul className="body-padding py-3 grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-6">
       {filteredData.map(function renderResult(data) {
         return (
-          <li key={data.id} className="max-w-">
+          <li key={data.id} className="grid">
             <PreviewCard data={data} />
           </li>
         );

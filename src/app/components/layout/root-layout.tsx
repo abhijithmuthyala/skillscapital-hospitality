@@ -20,7 +20,7 @@ export default function RootLayoutGrid({
   }, []);
 
   return (
-    <div className="grid grid-rows-[auto_1fr] grid-cols-[240px_1fr]">
+    <div className="grid grid-rows-[auto_1fr] grid-cols-[240px_1fr] gap-y-3">
       <div
         ref={headerRef}
         className="col-span-2 sticky top-0 backdrop-blur-lg row-start-1"
@@ -28,7 +28,7 @@ export default function RootLayoutGrid({
         {topSlot}
       </div>
       <div
-        className="col-span-1 col-start-1 shadow-xl shadow-zinc-400 sticky hidden md:block"
+        className="col-span-1 col-start-1 shadow-xl shadow-zinc-400 sticky hidden md:block overflow-y-auto"
         style={{
           top: `${sidebarTop}px`,
           height: `calc(100vh - ${sidebarTop} * 1px)`,

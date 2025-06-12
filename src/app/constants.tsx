@@ -4,4 +4,5 @@ export const defaultFilters: FiltersState = {
   search: "",
   type: "all",
   year: "all",
+  flagship: false,
 };
