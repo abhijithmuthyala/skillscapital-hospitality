@@ -130,4 +130,10 @@
   .body-padding {
     padding-inline: 1.5rem;
   }
+
+  .highlight-list-item-on-hover:has(:hover) > *:not(:hover) {
+    opacity: 0.5;
+    transition: all;
+    transition-duration: 300ms;
+  }
 }

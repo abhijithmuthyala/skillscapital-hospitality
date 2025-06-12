@@ -31,7 +31,7 @@ export default function Results() {
   }
 
   return (
-    <ul className="body-padding py-3 grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-6">
+    <ul className="body-padding py-3 grid grid-cols-[repeat(auto-fill,minmax(240px,1fr))] gap-6 highlight-list-item-on-hover">
       {filteredData.map(function renderResult(data) {
         return (
           <li key={data.id} className="grid">
